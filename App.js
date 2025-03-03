@@ -42,10 +42,20 @@ const NotificationScreen = () => {
     );
 };
 
-const ScanScreen = () => {
+const ScanScreen = ({ navigation }) => {
     return (
-        <View style={styles.container}>
-            <Text style={styles.greeting}>Scan</Text>
+        <View style={styles.scanContainer}>
+            <TouchableOpacity style={styles.backButton} onPress={() => navigation.navigate('Home')}>
+                <Text style={styles.backButtonText}>{'<'}</Text>
+            </TouchableOpacity>
+            <Image source={require('./assets/scan_image.png')} style={styles.scanImage} />
+            <View style={styles.productContainer}>
+                <Image source={require('./assets/scan_image.png')} style={styles.productImage} />
+                <Text style={styles.productName}>Orange Juice</Text>
+                <TouchableOpacity style={styles.addButton} onPress={() => console.log('Add product')}>
+                    <Text style={styles.addButtonText}>+</Text>
+                </TouchableOpacity>
+            </View>
         </View>
     );
 };
@@ -156,6 +166,10 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#f9f9f9',
     },
+    scanContainer: {
+        flex: 1,
+        backgroundColor: '#E0E0E0',
+    },
     header: {
         flexDirection: 'row',
         alignItems: 'center',
@@ -221,6 +235,74 @@ const styles = StyleSheet.create({
     },
     exploreText: {
         color: '#007bff',
+        fontSize: 16,
+    },
+    scanImage: {
+        width: 200,
+        height: 200,
+        alignSelf: 'center',
+        marginVertical: 20,
+    },
+    buttonContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        marginTop: 20,
+    },
+    button: {
+        backgroundColor: '#007bff',
+        padding: 10,
+        borderRadius: 5,
+    },
+    buttonText: {
+        color: '#fff',
+        fontSize: 16,
+    },
+    backButton: {
+        position: 'absolute',
+        top: 20,
+        left: 20,
+        zIndex: 1,
+        backgroundColor: '#FFFFFFB2',
+        borderRadius: 5,
+        width: 45,
+        height: 44,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    backButtonText: {
+        fontSize: 24,
+        color: '#5A6CF3',
+    },
+    productContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        padding: 20,
+        backgroundColor: '#fff',
+        borderRadius: 10,
+        marginHorizontal: 20,
+        marginTop: 20,
+    },
+    productImage: {
+        width: 50,
+        height: 50,
+        marginRight: 10,
+    },
+    productName: {
+        fontSize: 18,
+        color: '#333',
+    },
+    addButton: {
+        width: 45,
+        height: 44,
+        backgroundColor: '#5A6CF3',
+        padding: 10,
+        borderRadius: 5,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    addButtonText: {
+        color: '#fff',
         fontSize: 16,
     },
 });
